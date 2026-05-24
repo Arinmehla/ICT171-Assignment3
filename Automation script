@@ -1,85 +1,42 @@
-Bash Script
 As part of the project, I created a Bash script called:
+
 website-check.sh
+
 The purpose of this script is to check whether my cloud-hosted website is online. The script uses curl to request the website and return the HTTP status code. If the website returns status code 200, the script prints that the website is online. If another status code is returned, the script prints a warning message.
 The script is stored in this repository under:
+
 scripts/website-check.sh
+
 Script code:
 #!/bin/bash
 
-# ICT171 Assignment 3 - Website Availability Checker
-# This script checks whether my cloud-hosted website is online.
-
-# Store the website URL in a variable
 URL="https://arinmehla.info"
 
-# Use curl to request the website and return only the HTTP status code
 STATUS=$(curl -o /dev/null -s -w "%{http_code}" "$URL")
 
-# If the HTTP status code is 200, the website is responding successfully
 if [ "$STATUS" -eq 200 ]; then
     echo "Website is online. Status code: $STATUS"
 else
     echo "Website may be down. Status code: $STATUS"
 fi
+
+
 To make the script executable, I used:
+
 chmod +x website-check.sh
+
 To run the script, I used:
+
 ./website-check.sh
+
 The output was:
-Website is online. Status code: 200
+"Website is online. Status code: 200"
 This script is useful because it provides a quick command-line method to check whether the Azure-hosted website is responding correctly.
-Testing and Validation
-The following tests were completed to confirm that the server was working correctly.
-Nginx Service Test
-sudo systemctl status nginx
-Result:
-Active: active (running)
-Website File Test
-ls -l /var/www/html
-This confirmed that the website files were stored in the correct Nginx web directory.
-HTTPS Website Test
-curl -I https://arinmehla.info
-Result:
-HTTP/1.1 200 OK
-This confirmed that the website was online and accessible through HTTPS.
-HTTP Redirect Test
-curl -I http://arinmehla.info
-Result:
-HTTP/1.1 301 Moved Permanently
-Location: https://arinmehla.info/
-This confirmed that HTTP traffic redirected to HTTPS.
-Nginx Configuration Test
-sudo nginx -t
-This command was used to confirm that the Nginx configuration had no syntax errors.
-Script Test
-./website-check.sh
-Result:
-Website is online. Status code: 200
-This confirmed that the Bash script worked correctly.
-Problems Encountered and Fixes
-Problem 1: Azure Subscription Stopped
-At one point, my Azure for Students subscription ran out of available credit, which caused the website to stop running. I fixed this by reactivating the Azure subscription and starting the virtual machine again.
-Problem 2: Ping Packet Loss
-When I used the ping command, the domain resolved to the correct IP address but showed 100% packet loss.
-The output showed:
-arinmehla.info (20.92.249.85)
-This confirmed that DNS was working, but the server was not replying to ICMP ping packets. I learned that ping can be blocked by cloud firewall or network rules. I confirmed the website was working by using:
-curl -I https://arinmehla.info
-This returned:
-HTTP/1.1 200 OK
-Problem 3: HTTPS Localhost Error
-When I tested:
-curl https://localhost
-I received an SSL certificate error. This happened because the SSL certificate was issued for arinmehla.info, not localhost.
-I fixed this by testing the correct domain name instead:
-curl -I https://arinmehla.info
-Problem 4: Bash Script Syntax Error
-While creating the Bash script, I received this error:
-syntax error: unexpected end of file
-This happened because the Bash if statement was not closed correctly. I fixed the issue by adding:
-fi
-at the end of the if statement.
+
+
+
+
+
 What I Learned
 Through this project, I learned how to create and manage a cloud server using Infrastructure as a Service. I gained experience with Azure virtual machines, SSH, Linux commands, Nginx configuration, DNS records, HTTPS testing and Bash scripting.
 I also learned that server testing should use more than one method. For example, ping may fail because of blocked ICMP traffic, even when the website is still working. In this project, curl was a more useful test because it checked the actual HTTP and HTTPS response from the website.
