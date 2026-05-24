@@ -1,1 +1,23 @@
-
+Problems Encountered and Fixes
+Problem 1: Azure Subscription Stopped
+At one point, my Azure for Students subscription ran out of available credit, which caused the website to stop running. I fixed this by reactivating the Azure subscription and starting the virtual machine again.
+Problem 2: Ping Packet Loss
+When I used the ping command, the domain resolved to the correct IP address but showed 100% packet loss.
+The output showed:
+arinmehla.info (20.92.249.85)
+This confirmed that DNS was working, but the server was not replying to ICMP ping packets. I learned that ping can be blocked by cloud firewall or network rules. I confirmed the website was working by using:
+curl -I https://arinmehla.info
+This returned:
+HTTP/1.1 200 OK
+Problem 3: HTTPS Localhost Error
+When I tested:
+curl https://localhost
+I received an SSL certificate error. This happened because the SSL certificate was issued for arinmehla.info, not localhost.
+I fixed this by testing the correct domain name instead:
+curl -I https://arinmehla.info
+Problem 4: Bash Script Syntax Error
+While creating the Bash script, I received this error:
+syntax error: unexpected end of file
+This happened because the Bash if statement was not closed correctly. I fixed the issue by adding:
+fi
+at the end of the if statement.
