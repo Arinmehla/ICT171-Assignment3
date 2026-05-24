@@ -1,0 +1,52 @@
+Domain Name and DNS Setup
+After the website was working through the Azure public IP address, I purchased a custom domain name from Namecheap.
+
+The domain name used for this project was:
+
+arinmehla.info
+
+The domain was configured to point to the Azure virtual machine public IP address:
+
+20.92.249.85
+
+The domain was tested using:
+
+ping arinmehla.info
+
+The output showed that the domain resolved to the correct public IP address:
+
+arinmehla.info (20.92.249.85)
+
+Although the ping command showed 100% packet loss, this did not mean the website was down. The domain was resolving correctly, and the website was successfully tested using HTTPS. ICMP ping can be blocked by cloud firewall or network rules, so curl was used as the main website test.
+
+
+HTTPS/SSL Configuration
+
+HTTPS was configured so that the website could be accessed securely.
+The HTTPS website was tested using:
+
+curl -I https://arinmehla.info
+
+The successful output was:
+
+HTTP/1.1 200 OK
+
+Server: nginx/1.24.0 (Ubuntu)
+
+Content-Type: text/html
+
+Content-Length: 3956
+
+This confirmed that the website was accessible through HTTPS.
+
+The HTTP version was also tested:
+
+curl -I http://arinmehla.info
+
+The output showed:
+
+HTTP/1.1 301 Moved Permanently
+
+Location: https://arinmehla.info/
+
+This confirmed that normal HTTP traffic redirects to the secure HTTPS version of the website.
