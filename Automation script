@@ -52,11 +52,3 @@ Ubuntu. (n.d.). Ubuntu Server documentation. https://ubuntu.com/server/docs
 GitHub Docs. (n.d.). About repositories. GitHub Docs. https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories
 cURL. (n.d.). curl documentation. https://curl.se/docs/
 Namecheap. (n.d.). How can I set up an A address record for my domain? Namecheap Knowledgebase. https://www.namecheap.com/support/knowledgebase/article.aspx/319/2237/how-can-i-set-up-an-a-address-record-for-my-domain/
-
-After you paste it, click **Commit changes**.
-
-Commit message:
-
-```text
-Add complete cloud server project documentation
-And one more thing: start your Azure VM again before taking final screenshots or recording the video. Right now your screenshot shows it is stopped.
