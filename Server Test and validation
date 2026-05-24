@@ -1,1 +1,28 @@
-
+Testing and Validation
+The following tests were completed to confirm that the server was working correctly.
+Nginx Service Test
+sudo systemctl status nginx
+Result:
+Active: active (running)
+Website File Test
+ls -l /var/www/html
+This confirmed that the website files were stored in the correct Nginx web directory.
+HTTPS Website Test
+curl -I https://arinmehla.info
+Result:
+HTTP/1.1 200 OK
+This confirmed that the website was online and accessible through HTTPS.
+HTTP Redirect Test
+curl -I http://arinmehla.info
+Result:
+HTTP/1.1 301 Moved Permanently
+Location: https://arinmehla.info/
+This confirmed that HTTP traffic redirected to HTTPS.
+Nginx Configuration Test
+sudo nginx -t
+This command was used to confirm that the Nginx configuration had no syntax errors.
+Script Test
+./website-check.sh
+Result:
+Website is online. Status code: 200
+This confirmed that the Bash script worked correctly.
