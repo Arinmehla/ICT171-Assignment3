@@ -1,0 +1,24 @@
+Nginx Web Server Setup
+
+Nginx was used as the web server for this project. 
+Nginx is suitable for hosting a static HTML website because it is lightweight, reliable and commonly used on Linux servers.
+To check whether Nginx was running, I used:
+
+sudo systemctl status nginx
+
+The output showed:
+
+Active: active (running)
+
+This confirmed that the Nginx web server was running successfully.
+Other useful Nginx commands used during the project were:
+
+sudo systemctl start nginx
+
+sudo systemctl restart nginx
+
+sudo systemctl enable nginx
+
+sudo nginx -t
+
+The sudo nginx -t command was used to test the Nginx configuration for syntax errors before restarting the web server.
