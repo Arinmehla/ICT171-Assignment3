@@ -1,0 +1,39 @@
+For this project, I created a cloud-hosted web server using Microsoft Azure. I used an Azure for Students subscription, which provided initial free credits to create and test the server.
+The server was created using Infrastructure as a Service because I had direct SSH access to the virtual machine and manually configured the server environment myself. 
+I configured the required network ports, installed and used Nginx, deployed a custom HTML website, connected a Namecheap domain name, and configured HTTPS/SSL.
+The website is called Classic Cars Showcase. It is a static HTML website that displays information about selected classic cars.
+
+
+This project uses Infrastructure as a Service because I created and managed my own cloud virtual machine instead of using a pre-built hosting platform.
+I was responsible for:
+Creating the Azure virtual machine
+Connecting to the server using SSH
+Configuring network ports
+Managing the Linux command-line environment
+Installing and configuring Nginx
+Uploading and editing website files
+Connecting a custom domain name
+Configuring HTTPS/SSL
+Testing and troubleshooting the server
+This gave me direct control over the operating system, server software and network configuration.
+
+
+The project started by creating a virtual machine in Microsoft Azure. I used the Azure for Students subscription because it provided free initial credits for learning and testing.
+Ubuntu Linux was selected as the operating system because it is commonly used for web servers and can be managed through the command line.
+After creating the virtual machine, I configured the required inbound network ports.
+Port	Service	Purpose
+
+22	SSH	allows remote command-line access to the server
+
+80	HTTP	allows normal website traffic
+
+443	HTTPS	allows secure website traffic
+
+These ports were required so that I could manage the server remotely and allow users to access the website through a browser.
+
+SSH Access
+I connected to the Azure virtual machine from my Mac terminal using SSH.
+ssh -i Arinmehla_key.pem azureuser@20.92.249.85
+After logging in successfully, the terminal showed:
+azureuser@Arinmehla:~$
+This confirmed that I was connected to the Azure Linux server.
