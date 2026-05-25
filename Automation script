@@ -1,54 +1,43 @@
-As part of the project, I created a Bash script called:
+Automation script
 
-website-check.sh
+I created an automated script that checks my website every 5 minutes. If it's up or if it's down. If it's down, it will email me every 5 minutes; if it's up, it will do nothing.
+My script uses curl to request the HTTP status code from the website. If the website returns a status code 200, this means that my website is running correctly. If the website returns the status code 000, this means the website is down. My script will record the issue in a log file and send me an email using MSMTP. 
+My script is stored in the Azure virtual machine, and it is also included in this GitHub repository under “scripts/website-check-email.sh”.
+Script Code:
 
-The purpose of this script is to check whether my cloud-hosted website is online. The script uses curl to request the website and return the HTTP status code. If the website returns status code 200, the script prints that the website is online. If another status code is returned, the script prints a warning message.
-The script is stored in this repository under:
-
-scripts/website-check.sh
-
-Script code:
-#!/bin/bash
-
+“#!/bin/bash
 URL="https://arinmehla.info"
+EMAIL="myemail@example.com"
+LOG_FILE="$HOME/scripts/website-alert.log"
+
+CURRENT_TIME=$(date)
 
 STATUS=$(curl -o /dev/null -s -w "%{http_code}" "$URL")
 
 if [ "$STATUS" -eq 200 ]; then
-    echo "Website is online. Status code: $STATUS"
+    echo "$CURRENT_TIME - Website is online. Status code: $STATUS" >> "$LOG_FILE"
 else
-    echo "Website may be down. Status code: $STATUS"
-fi
+    echo "$CURRENT_TIME - Website may be down. Status code: $STATUS" >> "$LOG_FILE"
 
+    {
+        echo "Subject: ICT171 Website Down Alert"
+        echo "To: $EMAIL"
+        echo "From: $EMAIL"
+        echo
+        echo "Warning: The website $URL may be down."
+        echo "Status code: $STATUS"
+        echo "Time: $CURRENT_TIME"
+    } | msmtp "$EMAIL"
+fi”
 
-To make the script executable, I used:
+“”For privacy, instead of writing my personal email in GitHub. I used myemail@gmail.com here. ””
 
-chmod +x website-check.sh
+ I used “chmod +x /home/azureuser/scripts/website-check-email.sh” To make my script executable. So my terminal reads it as a script, not as a file.
+So, for sending an email to my account, I used msmtp. We can download msmtp with a simple command “sudo apt install msmtp”. I used msmtp because Azure was restricting the outbound SMTP on port 25. So I configured the server to use port 587 instead.
 
-To run the script, I used:
+Till now, this script only works when we manually write the commands in the terminal.
+To make it an automated task, we need to use Cron. Cron is basically a Linux scheduler that performs a task at a certain time that we decide. I opened cron using “crontab -e”, then I added this line in the last “*/5 * * * * /home/azureuser/scripts/website-check-email.sh” And saved it. Cron now performs the task every 5 minutes that will check the website.
 
-./website-check.sh
+Testing the Automation:
 
-The output was:
-"Website is online. Status code: 200"
-This script is useful because it provides a quick command-line method to check whether the Azure-hosted website is responding correctly.
-
-
-
-
-
-What I Learned
-Through this project, I learned how to create and manage a cloud server using Infrastructure as a Service. I gained experience with Azure virtual machines, SSH, Linux commands, Nginx configuration, DNS records, HTTPS testing and Bash scripting.
-I also learned that server testing should use more than one method. For example, ping may fail because of blocked ICMP traffic, even when the website is still working. In this project, curl was a more useful test because it checked the actual HTTP and HTTPS response from the website.
-Conclusion
-This project successfully demonstrates the creation and configuration of a cloud-hosted web server using Microsoft Azure, Ubuntu Linux and Nginx. The server hosts a custom Classic Cars Showcase website and is accessible through a custom domain name with HTTPS enabled.
-The project also includes a Bash script to check website availability and GitHub documentation that explains the setup process clearly.
-References
-Microsoft. (n.d.). Azure Virtual Machines documentation. Microsoft Learn. https://learn.microsoft.com/en-us/azure/virtual-machines/
-Microsoft. (n.d.). Network security groups. Microsoft Learn. https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview
-Microsoft. (n.d.). Azure DNS documentation. Microsoft Learn. https://learn.microsoft.com/en-us/azure/dns/
-NGINX. (n.d.). Beginner’s guide. NGINX Documentation. https://nginx.org/en/docs/beginners_guide.html
-Ubuntu. (n.d.). Ubuntu Server documentation. https://ubuntu.com/server/docs
-GitHub Docs. (n.d.). About repositories. GitHub Docs. https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories
-cURL. (n.d.). curl documentation. https://curl.se/docs/
-Namecheap. (n.d.). How can I set up an A address record for my domain? Namecheap Knowledgebase. https://www.namecheap.com/support/knowledgebase/article.aspx/319/2237/how-can-i-set-up-an-a-address-record-for-my-domain/
+To test whether the script is working correctly and automatically. We need to stop our (Nginx), which will make the website unavailable. Making sure that our server is still running. If the server itself is stopped, then it will not send any email because everything is configured in the Azure VM. After stopping our Nginx, waiting for 5 minutes, I received an email that my website had stopped working.
