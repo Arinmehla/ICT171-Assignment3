@@ -1,29 +1,30 @@
-Testing and Validation
+# Testing and Validation
 
 These tests are done, to confirm that the server is working completely.
 
-Nginx running status test:
-sudo systemctl status nginx
+## Nginx running status test:
+**sudo systemctl status nginx**
 
 Result:
+
 Active: active (running)
 
-Website File Test:
+## Website File Test:
 ls -l /var/www/html
 
 This confirmed that the website files were stored in the correct Nginx web directory.
 
 
-HTTPS Website Test
+## HTTPS Website Test
 curl -I https://arinmehla.info
 
-Result:
+**Result:**
 HTTP/1.1 200 OK
 
 This confirmed that the website is online and accessible through HTTPS.
 
 
-HTTP Redirect Test
+## HTTP Redirect Test
 curl -I http://arinmehla.info
 
 Result:
@@ -32,12 +33,12 @@ Location: https://arinmehla.info/
 This confirmed that HTTP traffic redirected to HTTPS.
 
 
-Nginx Configuration Test
+## Nginx Configuration Test
 sudo nginx -t
 
 This command is used to confirm that the Nginx configuration had no syntax errors.
 
-Automation Script Test:
+## Automation Script Test:
 
 I started with stopping the Nginx.
 "sudo systemctl stop nginx"
