@@ -35,7 +35,7 @@ So, for sending an email to my account, I used msmtp. We can download msmtp with
 Till now, this script only works when we manually write the commands in the terminal.
 To make it an automated task, we need to use Cron. 
 # CRON
-Cron is basically a Linux scheduler that performs a task at a certain time that we decide. I opened cron using “crontab -e”, then I added this line in the last “*/5 * * * * /home/azureuser/scripts/website-check-email.sh” And saved it. Cron now performs the task every 5 minutes that will check the website.
+Cron is basically a Linux scheduler that performs a task at a certain time that we decide. I opened cron using “crontab -e”, then I added this line in the last ***/5 * * * * /home/azureuser/scripts/website-check-email.sh** And saved it. Cron now performs the task every 5 minutes that will check the website.
 
 **Testing the Automation:**
 
