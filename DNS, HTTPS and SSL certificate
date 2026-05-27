@@ -1,4 +1,4 @@
-#Domain Name:
+# Domain Name:
 After my website is working through the Azure public IP address, I purchased my custom domain name from Namecheap.
 My domain name is “arinmehla.info”
 I configured my domain name to point to the Azure virtual machine public IP address:
