@@ -1,34 +1,34 @@
-Nginx Setup:
+# Nginx Setup:
 I used Nginx as a web server for my project.
 Nginx is the table for hosting simple and static websites it is reliable and commonly used in Linux servers.
 
-To install Nginx:
+## To install Nginx:
 
 sudo apt update 
 sudo apt install nginx -y
 
-To run Nginx:
+## To run Nginx:
 
 sudo systemctl start nginx
 sudo systemctl enable nginx
 
-To check weather its running or not
+**To check weather its running or not**
 
 sudo systemctl status nginx
 
 
-Testing Nginx:
+## Testing Nginx:
 
 sudo nginx -t
 
-Output:
+**Output:**
 nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
 
-Editing the website file:
+## Editing the website file:
 cd /var/www/html
 sudo nano /var/www/html/index.html
 
-needs to restart Nginx after the changes
+**restarting Nginx after the changes**
 
 sudo systemctl restart nginx
