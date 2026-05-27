@@ -1,19 +1,15 @@
-Automation script
+# Automation script
 
 I created an automated script that checks my website every 5 minutes. If it's up or if it's down. If it's down, it will email me every 5 minutes; if it's up, it will do nothing.
 My script uses curl to request the HTTP status code from the website. If the website returns a status code 200, this means that my website is running correctly. If the website returns the status code 000, this means the website is down. My script will record the issue in a log file and send me an email using MSMTP. 
 My script is stored in the Azure virtual machine, and it is also included in this GitHub repository under “scripts/website-check-email.sh”.
-Script Code:
-
-“#!/bin/bash
+## Script Code:
+ “#!/bin/bash
 URL="https://arinmehla.info"
 EMAIL="myemail@example.com"
 LOG_FILE="$HOME/scripts/website-alert.log"
-
 CURRENT_TIME=$(date)
-
 STATUS=$(curl -o /dev/null -s -w "%{http_code}" "$URL")
-
 if [ "$STATUS" -eq 200 ]; then
     echo "$CURRENT_TIME - Website is online. Status code: $STATUS" >> "$LOG_FILE"
 else
@@ -29,15 +25,16 @@ else
         echo "Time: $CURRENT_TIME"
     } | msmtp "$EMAIL"
 fi”
+**For privacy, instead of writing my personal email in GitHub. I used myemail@gmail.com here.**
 
-“”For privacy, instead of writing my personal email in GitHub. I used myemail@gmail.com here. ””
-
- I used “chmod +x /home/azureuser/scripts/website-check-email.sh” To make my script executable. So my terminal reads it as a script, not as a file.
-So, for sending an email to my account, I used msmtp. We can download msmtp with a simple command “sudo apt install msmtp”. I used msmtp because Azure was restricting the outbound SMTP on port 25. So I configured the server to use port 587 instead.
+ I used **chmod +x /home/azureuser/scripts/website-check-email.sh** To make my script executable. So my terminal reads it as a script, not as a file.
+So, for sending an email to my account, I used msmtp. We can download msmtp with a simple command **sudo apt install msmtp**. I used msmtp because Azure was restricting the outbound SMTP on port 25. So I configured the server to use port 587 instead.
 
 Till now, this script only works when we manually write the commands in the terminal.
-To make it an automated task, we need to use Cron. Cron is basically a Linux scheduler that performs a task at a certain time that we decide. I opened cron using “crontab -e”, then I added this line in the last “*/5 * * * * /home/azureuser/scripts/website-check-email.sh” And saved it. Cron now performs the task every 5 minutes that will check the website.
+To make it an automated task, we need to use Cron. 
+# CRON
+Cron is basically a Linux scheduler that performs a task at a certain time that we decide. I opened cron using “crontab -e”, then I added this line in the last “*/5 * * * * /home/azureuser/scripts/website-check-email.sh” And saved it. Cron now performs the task every 5 minutes that will check the website.
 
-Testing the Automation:
+**Testing the Automation:**
 
 To test whether the script is working correctly and automatically. We need to stop our (Nginx), which will make the website unavailable. Making sure that our server is still running. If the server itself is stopped, then it will not send any email because everything is configured in the Azure VM. After stopping our Nginx, waiting for 5 minutes, I received an email that my website had stopped working.
