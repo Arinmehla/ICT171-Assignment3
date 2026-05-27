@@ -14,4 +14,4 @@ ls -l /var/www/html
 
 sudo nano /var/www/html/index.html
 
-**The website content was written in HTML and displayed information about selected classic cars.***
+**The website content was written in HTML and displayed information about selected classic cars.**
