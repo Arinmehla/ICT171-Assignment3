@@ -29,7 +29,9 @@ curl -I http://arinmehla.info
 
 Result:
 HTTP/1.1 301 Moved Permanently
+
 Location: https://arinmehla.info/
+
 This confirmed that HTTP traffic redirected to HTTPS.
 
 
