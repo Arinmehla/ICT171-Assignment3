@@ -5,11 +5,17 @@ For my project, I created a cloud server using Microsoft Azure. I used an Azure 
 
 ## I used Infrastructure as a Service (IAAS) because I wanted to create and manage my own cloud virtual machine instead of using a prebuilt platform with limited resources.
 o	I created the Azure virtual machine.
+
 o	I connected my VM to the server using SSH.
+
 o	I configured network ports.
+
 o	I installed and configured Nginx.
+
 o	I uploaded stuff to my website.
+
 o	I connected a custom domain name to my website.
+
 o	I configured HTTPS and SSL.
 
 ## Port	Service	Purpose
