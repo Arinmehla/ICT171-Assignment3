@@ -4,7 +4,8 @@ Nginx is the table for hosting simple and static websites it is reliable and com
 
 ## To install Nginx:
 
-sudo apt update 
+sudo apt update
+
 sudo apt install nginx -y
 
 ## To run Nginx:
