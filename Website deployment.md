@@ -1,8 +1,4 @@
-**The website files were stored in the default Nginx web root directory:**
-
-/var/www/html
-
-# The main website file was:
+# The main website file is:
 
 index.html
 
