@@ -11,6 +11,7 @@ sudo apt install nginx -y
 ## To run Nginx:
 
 sudo systemctl start nginx
+
 sudo systemctl enable nginx
 
 **To check weather its running or not**
@@ -24,10 +25,12 @@ sudo nginx -t
 
 **Output:**
 nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+
 nginx: configuration file /etc/nginx/nginx.conf test is successful
 
 ## Editing the website file:
 cd /var/www/html
+
 sudo nano /var/www/html/index.html
 
 **restarting Nginx after the changes**
