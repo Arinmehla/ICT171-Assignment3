@@ -1,0 +1,17 @@
+**The website files were stored in the default Nginx web root directory:**
+
+/var/www/html
+
+# The main website file was:
+
+index.html
+
+**To check the files in the web directory, I used:**
+
+ls -l /var/www/html
+
+**To edit the website file, I used:**
+
+sudo nano /var/www/html/index.html
+
+**The website content was written in HTML and displayed information about selected classic cars.***
