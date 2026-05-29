@@ -23,8 +23,3 @@ Content-Type: text/html
 **This confirms that the website is accessible through HTTPS.**
 
 
-# Testing HTTP:
-curl -I http://arinmehla.info
-HTTP/1.1 301 Moved Permanently
-**Location: https://arinmehla.info/**
-This proves that the HTTP traffic redirects to the HTTPS version of the website.
