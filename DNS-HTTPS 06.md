@@ -10,9 +10,13 @@ It confirmed to me that the domain resolved to the correct public IP address. Th
 # HTTPS/SSL Configuration:
 
 The HTTPS website was tested using:
+
 **curl -I https://arinmehla.info**
+
 The successful output was:
+
 **HTTP/1.1 200 OK**
+
 Server: nginx/1.24.0 (Ubuntu)
 Content-Type: text/html
 
