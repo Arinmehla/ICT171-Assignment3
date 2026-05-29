@@ -2,7 +2,6 @@
 
 I created an automated script that checks my website every 5 minutes. If it's up or if it's down. If it's down, it will email me every 5 minutes; if it's up, it will do nothing.
 My script uses curl to request the HTTP status code from the website. If the website returns a status code 200, this means that my website is running correctly. If the website returns the status code 000, this means the website is down. My script will record the issue in a log file and send me an email using MSMTP. 
-My script is stored in the Azure virtual machine, and it is also included in this GitHub repository under “scripts/website-check-email.sh”.
 
 ## Script Code
 
