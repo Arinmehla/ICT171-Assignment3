@@ -18,9 +18,6 @@ https://documentation.ubuntu.com/server/
 GitHub Docs. (n.d.). *Basic writing and formatting syntax*.
 https://docs.github.com/en/get-started/writing-on-github/basic-writing-and-formatting-syntax
 
-SCH-IT-MurdochUni. (n.d.). *Obtaining a digital certificate from Let's Encrypt*. GitHub.
-https://github.com/SCH-IT-MurdochUni/NetworkingLabs/blob/main/Server_Environments_and_Architectures/obtaining_a_digital_certificate_from_lets_encrypt.md
-
 curl. (n.d.). *curl man page*.  
 https://curl.se/docs/manpage.html
 
