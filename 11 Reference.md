@@ -26,3 +26,11 @@ https://curl.se/docs/manpage.html
 
 ArchWiki. (n.d.). *msmtp*.  
 https://wiki.archlinux.org/title/Msmtp
+
+Namecheap. (n.d.). *How can I set up an A (address) record for my domain?*
+https://www.namecheap.com/support/knowledgebase/article.aspx/319/2237/how-can-i-set-up-an-a-address-record-for-my-domain/
+
+Ubuntu. (n.d.). *CronHowto*. Ubuntu Community Help Wiki.
+https://help.ubuntu.com/community/CronHowto
+
+
