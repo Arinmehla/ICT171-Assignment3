@@ -1,13 +1,23 @@
-# The main website file is:
+# Website Deployment
 
-index.html
+After installing and starting Nginx, I deployed my website by editing the HTML default Nginx web directory with my file.
 
-**To check the files in the web directory, I used:**
+First, I moved into the Nginx web directory:
 
-ls -l /var/www/html
+**cd /var/www/html**
 
-**To edit the website file, I used:**
+Checked the files
 
-sudo nano /var/www/html/index.html
+**ls -l**
 
-**The website content was written in HTML and displayed information about selected classic cars.**
+Edited the main nginx file with my content
+
+**sudo nano index.html**
+
+To load my new content properly need to restart the nginx
+
+**sudo systemctl restart nginx**
+
+Then, test the website with public IP address
+
+**curl -I http://20.92.249.85**
