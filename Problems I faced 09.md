@@ -1,20 +1,13 @@
 # Problems I faced and their Fixes
 ## Problem 1: Azure Subscription Stopped
-At one point, my Azure for Students subscription ran out of available credit, which caused the website to stop running. I fixed this by reactivating the Azure subscription and starting the virtual machine again.
-## Problem 2: Ping Packet Loss
-When I used the ping command, the domain resolved to the correct IP address but showed 100% packet loss.
-The output showed:
-arinmehla.info (20.92.249.85)
-This confirmed that DNS was working, but the server was not replying to ICMP ping packets. I learned that ping can be blocked by cloud firewall or network rules. I confirmed the website was working by using:
-curl -I https://arinmehla.info
-**This returned:**
-HTTP/1.1 200 OK
-## Problem 3: HTTPS Localhost Error
-When I tested:
-curl https://localhost
-I received an SSL certificate error. This happened because the SSL certificate was issued for arinmehla.info, not localhost.
-I fixed this by testing the correct domain name instead:
-curl -I https://arinmehla.info
+At one point, my Azure for Students subscription ran out of available free credit, which caused the website to stop running. I fixed the Azure subscription and starting the virtual machine again.
+
+# Problem 2: Website timing out when using the public IP address in the beginning
+In the beginning, I faced a problem while opening my website using my public IP address before purchasing my domain name. When I try to open my website through the IP address, it does not load, and the request times out. After digging through, I realised that I had not assigned the needed ports to my server yet. So, I assigned port 80, which is for HTTP, and later I assigned HTTPS to run the website on my domain name.
+
+# Problem 3: Website works on the domain name but not directly on the IP address
+In the end, I noticed that my website is working properly when I use my domain name, but it is not loading properly when I use my public IP address. This is happening because I configured my nginx and HTTPS for my domain name. So now my website is configured to respond to my domain name. That's why it is not working properly on my public IP address.
+
 ## Problem 4: Bash Script Syntax Error
 While creating the Bash script, I received this error:
 syntax error: unexpected end of file
