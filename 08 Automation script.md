@@ -32,6 +32,7 @@ else
     } | msmtp "$EMAIL"
 fi
 
+#AUTOMATION
 
 **For privacy, instead of writing my personal email in GitHub. I used myemail@gmail.com here.**
 
